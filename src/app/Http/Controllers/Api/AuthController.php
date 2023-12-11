@@ -21,13 +21,14 @@ class AuthController extends Controller
         if ($login) {
             $user = User::select('id','email','name')->where('email', $request->email)->first();
             $token = $user->createToken('auth_token')->plainTextToken;
+            $refresh = $user->createToken('refresh_token')->plainTextToken;
 
             return response()->json([
                 "ok" => true,
                 'data' => (object) array(
                     'user' => $user,
                     'access_token' => $token,
-                    'refresh_token' => ''
+                    'refresh_token' => $refresh
                 )
             ], 200);
         }
@@ -37,5 +38,27 @@ class AuthController extends Controller
             "err" => "ERR_INVALID_CREDS",
             "msg" => "incorrect username or password"
         ], 401);
+    }
+
+    public function refresh()
+    {
+        $user = User::find(auth('sanctum')->user()->id);
+
+        if (!$user) {
+            return response()->json([
+                'ok' => false,
+                'err' => 'ERR_NOT_FOUND',
+                'msg' => 'resource is not found'
+            ], 404);
+        }
+
+        $token = $user->createToken('auth_token')->plainTextToken;
+
+        return response()->json([
+            "ok" => true,
+            'data' => (object) array(
+                'access_token' => $token
+            )
+        ], 200);
     }
 }

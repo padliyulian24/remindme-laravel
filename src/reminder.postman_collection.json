@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "fd9ec1d8-fa35-4562-a714-ef69df111050",
+		"_postman_id": "198f0028-586c-4214-ac17-f69c61da9128",
 		"name": "reminder",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -28,6 +28,39 @@
 								}
 							}
 						},
+						"url": {
+							"raw": "{{base_url}}/session",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"session"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "refresh token",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{base_url}}/session",
 							"host": [
@@ -102,6 +135,159 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "show",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/reminders/2",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"reminders",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/reminders/2",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"reminders",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"reminder1\",\n    \"description\": \"description1\",\n    \"remind_at\": \"1701246722\",\n    \"event_at\": \"1701223200\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/reminders",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"reminders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"reminder1 edit\",\n    \"description\": \"description1 edit\",\n    \"remind_at\": \"1701246721\",\n    \"event_at\": \"1701223201\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/reminders/2",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"reminders",
+								"2"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		}
@@ -133,7 +319,7 @@
 		},
 		{
 			"key": "token",
-			"value": "3|zScN6sVJHix1uDZVSiCUWEVQwnUaozaySfh6G5Muba0c4ebd"
+			"value": "4|kJhkypZAOiPWY4wrLu52Wceo3PTO1PhEGHYpQhpva9d83965"
 		}
 	]
 }

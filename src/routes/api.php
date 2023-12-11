@@ -23,6 +23,7 @@ use App\Http\Controllers\Api\ReminderController;
 Route::prefix('session')->name('session.')->group(
     function() {
         Route::post('/', [AuthController::class, 'login'])->name('login');
+        Route::put('/', [AuthController::class, 'refresh'])->name('refresh');
     }
 );
 
@@ -30,5 +31,9 @@ Route::prefix('session')->name('session.')->group(
 Route::middleware('auth:sanctum')->prefix('reminders')->name('reminders.')->group(
     function() {
         Route::get('/', [ReminderController::class, 'index'])->name('index');
+        Route::post('/', [ReminderController::class, 'store'])->name('store');
+        Route::get('/{id}', [ReminderController::class, 'show'])->name('show');
+        Route::put('/{id}', [ReminderController::class, 'update'])->name('update');
+        Route::delete('/{id}', [ReminderController::class, 'destroy'])->name('destroy');
     }
 );
