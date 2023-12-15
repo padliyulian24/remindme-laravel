@@ -22,7 +22,7 @@ jobs:
     #   run: curl -sS https://getcomposer.org/installer -o composer-setup.php && sudo /opt/php-8.2/bin/php composer-setup.php --install-dir=/usr/local/bin --filename=composer
     - name: deploy on main
       if: github.ref == 'refs/heads/main'
-      uses: appleboy/ssh-action@main
+      uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.HOST_PROD }}
         username: ${{ secrets.USR_PROD }}
