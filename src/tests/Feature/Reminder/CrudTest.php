@@ -38,8 +38,8 @@ class CrudTest extends TestCase
             [
                 'title' => 'reminder1',
                 'description' => 'description1',
-                'remind_at' => '1701246722',
-                'event_at' => '1701223200'
+                'remind_at' => '2023/12/15 21:00',
+                'event_at' => '2023/12/16 21:00'
             ],
             ['Authorization' => $token]
         );
@@ -56,8 +56,8 @@ class CrudTest extends TestCase
             '/api/reminders',
             [
                 'description' => 'description1',
-                'remind_at' => '1701246722',
-                'event_at' => '1701223200'
+                'remind_at' => '2023/12/15 21:00',
+                'event_at' => '2023/12/16 21:00'
             ],
             ['Authorization' => $token]
         );
@@ -75,8 +75,8 @@ class CrudTest extends TestCase
             [
                 'title' => 'reminder1',
                 'description' => 'description1',
-                'remind_at' => '1701246722',
-                'event_at' => '1701223200'
+                'remind_at' => '2023/12/15 21:00',
+                'event_at' => '2023/12/16 21:00'
             ],
             ['Authorization' => $token]
         );
@@ -96,8 +96,8 @@ class CrudTest extends TestCase
             [
                 'title' => 'reminder1',
                 'description' => 'description1',
-                'remind_at' => '1701246722',
-                'event_at' => '1701223200'
+                'remind_at' => '2023/12/15 21:00',
+                'event_at' => '2023/12/16 21:00'
             ],
             ['Authorization' => $token]
         );
@@ -117,8 +117,8 @@ class CrudTest extends TestCase
             [
                 'title' => 'reminder1',
                 'description' => 'description1',
-                'remind_at' => '1701246722',
-                'event_at' => '1701223200'
+                'remind_at' => '2023/12/15 21:00',
+                'event_at' => '2023/12/16 21:00'
             ],
             ['Authorization' => $token]
         );
@@ -138,8 +138,8 @@ class CrudTest extends TestCase
             [
                 'title' => 'reminder1',
                 'description' => 'description1',
-                'remind_at' => '1701246722',
-                'event_at' => '1701223200'
+                'remind_at' => '2023/12/15 21:00',
+                'event_at' => '2023/12/16 21:00'
             ],
             ['Authorization' => $token]
         );
@@ -159,8 +159,8 @@ class CrudTest extends TestCase
             [
                 'title' => 'reminder1',
                 'description' => 'description1',
-                'remind_at' => '1701246722',
-                'event_at' => '1701223200'
+                'remind_at' => '2023/12/15 21:00',
+                'event_at' => '2023/12/16 21:00'
             ],
             ['Authorization' => $token]
         );
@@ -180,8 +180,8 @@ class CrudTest extends TestCase
             [
                 'title' => 'reminder1',
                 'description' => 'description1',
-                'remind_at' => '1701246722',
-                'event_at' => '1701223200'
+                'remind_at' => '2023/12/15 21:00',
+                'event_at' => '2023/12/16 21:00'
             ],
             ['Authorization' => $token]
         );

@@ -16,3 +16,11 @@
 
 ### access api with postman file on repo
 - http://localhost/api
+
+### user and password
+-  `user : alice@mail.com, password : 123456`
+-  `user : bob@mail.com, password : 123456`
+
+# How To Test
+- `docker-compose exec php bash`
+- `php artisan test`
