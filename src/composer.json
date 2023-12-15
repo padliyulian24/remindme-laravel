@@ -54,7 +54,8 @@
             "php artisan migrate:fresh",
             "php artisan db:seed",
             "npm install",
-            "npm run build"
+            "npm run build",
+            "chown -R www-data:www-data *"
         ]
     },
     "extra": {
