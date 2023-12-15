@@ -1,0 +1,1 @@
+{"result":{"text":"2 I space ke space atas"},"status":"ok"}

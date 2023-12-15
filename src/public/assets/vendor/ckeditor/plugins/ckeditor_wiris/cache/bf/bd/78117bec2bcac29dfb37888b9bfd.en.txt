@@ -1,0 +1,1 @@
+{"result":{"text":"F with rightwards arrow on top equals left parenthesis 5 i with hat on top plus 9 j with hat on top space right parenthesis N"},"status":"ok"}

@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 use App\Models\Reminder;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class ReminderController extends Controller
 {
@@ -53,8 +54,8 @@ class ReminderController extends Controller
         $reminder->user_id = auth('sanctum')->user()->id;
         $reminder->title = $request->title;
         $reminder->description = $request->description;
-        $reminder->remind_at = $request->remind_at;
-        $reminder->event_at = $request->event_at;
+        $reminder->remind_at = Carbon::createFromFormat('Y/m/d H:m', $request->remind_at)->timestamp;
+        $reminder->event_at = Carbon::createFromFormat('Y/m/d H:m', $request->event_at)->timestamp;
         $reminder->save();
 
         return response()->json([
@@ -101,8 +102,8 @@ class ReminderController extends Controller
 
         if ($request->title) $reminder->title = $request->title;
         if ($request->description) $reminder->description = $request->description;
-        if ($request->remind_at) $reminder->remind_at = $request->remind_at;
-        if ($request->event_at) $reminder->event_at = $request->event_at;
+        if ($request->remind_at) $reminder->remind_at = Carbon::createFromFormat('Y/m/d H:m', $request->remind_at)->timestamp;
+        if ($request->event_at) $reminder->event_at = Carbon::createFromFormat('Y/m/d H:m', $request->event_at)->timestamp;
         $reminder->update();
 
         return response()->json([

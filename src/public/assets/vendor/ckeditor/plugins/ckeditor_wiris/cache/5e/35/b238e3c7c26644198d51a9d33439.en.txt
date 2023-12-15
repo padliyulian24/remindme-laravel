@@ -1,0 +1,1 @@
+{"result":{"text":"r with rightwards arrow on top equals left parenthesis a i with hat on top plus 2 j with hat on top space right parenthesis m space"},"status":"ok"}

@@ -1,0 +1,1 @@
+{"result":{"text":"m subscript 1 equals 3 k g"},"status":"ok"}

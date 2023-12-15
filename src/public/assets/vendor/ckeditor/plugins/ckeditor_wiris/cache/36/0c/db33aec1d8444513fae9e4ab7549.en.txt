@@ -1,0 +1,1 @@
+{"result":{"text":"1 comma 7 space m divided by s squared"},"status":"ok"}

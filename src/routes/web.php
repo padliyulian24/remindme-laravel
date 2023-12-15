@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ReminderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +16,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->to('/login');
 });
+
+Route::get('/login', [AuthController::class, 'login'])->name('login');
+
+Route::get('/reminder', [ReminderController::class, 'index'])->name('reminder.index');
+Route::get('/reminder/create', [ReminderController::class, 'create'])->name('reminder.create');
+Route::get('/reminder/edit', [ReminderController::class, 'edit'])->name('reminder.edit');
