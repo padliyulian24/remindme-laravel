@@ -1,0 +1,52 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CD reminder
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the main branch
+on:
+  workflow_dispatch:
+  push:
+    branches: 
+      - main
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    # - name: Install Composer
+    #   run: curl -sS https://getcomposer.org/installer -o composer-setup.php && sudo /opt/php-8.2/bin/php composer-setup.php --install-dir=/usr/local/bin --filename=composer
+    - name: deploy on main
+      if: github.ref == 'refs/heads/main'
+      uses: appleboy/ssh-action@main
+      with:
+        host: ${{ secrets.HOST_PROD }}
+        username: ${{ secrets.USR_PROD }}
+        key: ${{ secrets.KEY_PROD }}
+        port: ${{ secrets.PORT }}
+        script: |
+          cd /var/www/
+          if [ ! -d "./reminder" ];
+             then
+               sudo git init reminder;
+          fi
+          cd /var/www/reminder
+          sudo git remote add origin https://${{ secrets.GIT_USR }}:${{ secrets.GIT_PWD }}@github.com/padliyulian24/remindme-laravel.git
+          sudo git pull origin main
+          sudo git add *
+          sudo git commit -m "Auto CD"
+          sudo git branch -M main
+          sudo /opt/php-8.2/bin/php /usr/local/bin/composer install -n
+          sudo gsutil cp gs://reminder-env/env-prod/env_reminder /var/www/reminder/.env
+          sudo /opt/php-8.2/bin/php artisan key:generate
+          sudo /opt/php-8.2/bin/php artisan config:cache
+          sudo /opt/php-8.2/bin/php artisan config:clear
+          sudo /opt/php-8.2/bin/php artisan view:clear
+          sudo git status
+          sudo git remote rm origin
+          sudo chown -R nginx.nginx storage bootstrap
+          sudo chmod -R 777 storage bootstrap
