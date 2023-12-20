@@ -27,7 +27,7 @@ jobs:
       with:
         php-version: '8.2'
     
-    - name: Copy .env
+    - name: copy .env
       run: php -r "file_exists('.env') || copy('.env.example', '.env');"
 
     - name: Install Dependencies
